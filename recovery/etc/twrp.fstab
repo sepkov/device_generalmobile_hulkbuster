@@ -1,16 +1,10 @@
-/boot			emmc			/dev/bootimg		flags=display="Boot";backup=1;flashimg=1
-/logo			emmc			/dev/logo	    	flags=display="Logo";backup=1
-/misc			emmc			/dev/misc	    	flags=display="Misc";backup=0
-/nvram			emmc			/dev/nvram	    	flags=display="Nvram";backup=1
-/recovery		emmc			/dev/recovery		flags=display="Recovery";backup=1;flashimg=1
-/uboot			emmc			/dev/uboot	    	flags=display="Uboot";backup=1;flashimg=1
-/pro_info   	emmc		    /dev/pro_info       flags=subpartitionof=/uboot;backup=1
-/sec_ro     	emmc		    /dev/sec_ro         flags=subpartitionof=/uboot;backup=1
-/expdb      	emmc		    /dev/expdb          flags=subpartitionof=/uboot;backup=1
-/protect_f  	emmc		    /dev/protect_f      flags=display="Protect";backup=1
-/protect_s  	emmc		    /dev/protect_s      flags=subpartitionof=/protect_f;backup=1
-/system			ext4			/emmc@android		flags=display="System";wipeingui;flashimg=1
-/cache			ext4			/emmc@cache	    	flags=display="Cache"
-/data			ext4			/emmc@usrdata		flags=display="Data"
-/usbotg         vfat            /dev/block/mmcblk1p1  flags=display="OTG";storage;removable
-#/emmc           vfat        /dev/block/mmcblk0p8						flags=display="PhoneStorage";storage;wipeingui;removable
+/boot		   emmc		/dev/bootimg
+/logo          emmc     /dev/logo flags=display="Logo";backup=1
+/system		   ext4		/dev/mmcblk0p5 flags=display="System";backup=1;canbewiped;wipeingui
+/cache		   ext4		/emmc@cache
+/data		   ext4		/emmc@usrdata
+/nvram 		   emmc     /dev/nvram flags=display="SN/NVRAM";backup=1
+/sec_ro 	   emmc     /dev/sec_ro flags=subpartitionof=/nvram;backup=1
+/recovery	   emmc		/dev/recovery flags=display="Recovery";backup=1;
+/pro_info	   emmc     /dev/pro_info flags=subpartitionof=/nvram;backup=1
+/usbotg		   auto     /dev/block/sda1			/dev/block/sda			flags=display="Usb-Otg";storage;wipeingui;removable;backup=0

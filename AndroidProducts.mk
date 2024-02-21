@@ -1,3 +1,3 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device.mk \
-    $(LOCAL_DIR)/twrp_hulkbuster.mk
+    $(LOCAL_DIR)/device_hulkbuster.mk \
+    $(LOCAL_DIR)/hulkbuster.mk

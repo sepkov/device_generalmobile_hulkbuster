@@ -5,6 +5,10 @@ TARGET_BOOTLOADER_BOARD_NAME := Mediatek
 # Platform
 TARGET_BOARD_PLATFORM := mt6592
 
+# Partitions
+# BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
+
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -18,11 +22,12 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Kernel
 TARGET_PREBUILT_KERNEL := device/generalmobile/hulkbuster/kernel
+TARGET_PREBUILT_RECOVERY_KERNEL := device/generalmobile/hulkbuster/kernel
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_CUSTOM_BOOTIMG_MK := device/generalmobile/hulkbuster/mkbootimg.mk
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --second_offset 0x00f00000 --tags_offset 0x00000100
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --second_offset 0x00f00000 --tags_offset 0x00000100
 
 # USB Mounting
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0/gadget/lun0/file
@@ -41,17 +46,24 @@ TARGET_SCREEN_WIDTH := 1920
 TARGET_RECOVERY_FSTAB := device/generalmobile/hulkbuster/recovery/etc/twrp.fstab
 BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_THEME := landspace_hdpi
-TW_EXCLUDE_MTP := true
+TW_THEME := landscape_hdpi
+TW_EXCLUDE_TZDATA := false
+TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+LOCAL_STRIP_MODULE := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_USE_TOOLBOX := true
+TW_EXCLUDE_TZDATA := true
+TW_EXCLUDE_NANO := true
+TW_EXCLUDE_BASH := true
+TW_EXCLUDE_PYTHON := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/usb-otg"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
 TW_DEFAULT_EXTERNAL_STORAGE := true
-TW_NO_REBOOT_BOOTLOADER := true
-TW_NO_CPU_TEMP := true
-TW_INCLUDE_CRYPTO := true
 TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 150
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+
