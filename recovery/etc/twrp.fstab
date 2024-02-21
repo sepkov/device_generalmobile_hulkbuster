@@ -1,6 +1,6 @@
 /boot		   emmc		/dev/bootimg
 /logo          emmc     /dev/logo flags=display="Logo";backup=1
-/system		   ext4		/dev/mmcblk0p5 flags=display="System";backup=1;canbewiped;wipeingui
+/system		   ext4		/dev/block/mmcblk0p5 flags=display="System";backup=1;canbewiped;wipeingui
 /cache		   ext4		/emmc@cache
 /data		   ext4		/emmc@usrdata
 /nvram 		   emmc     /dev/nvram flags=display="SN/NVRAM";backup=1
